@@ -1,6 +1,7 @@
 package dieta_app.servicio;
 
 import dieta_app.modelo.Paciente;
+import dieta_app.modelo.Usuario;
 
 import java.util.List;
 
@@ -12,4 +13,5 @@ public interface IPacienteServicio {
     public Paciente guardar(Paciente Paciente);
 
     public void eliminarPorId(Integer idPaciente);
+    public Paciente obtenerPorUsuarioId(int usuarioid );
 }

@@ -13,5 +13,6 @@ public interface IUsuarioServicio {
     public Usuario guardar(Usuario Usuario);
 
     public void eliminarPorId(Integer idUsuario);
-    
+
+
 }

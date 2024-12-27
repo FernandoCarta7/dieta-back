@@ -20,7 +20,7 @@ public class Usuario {
 
     public Usuario(Usuario usuario) {
         String [] nombres = usuario.getNombre().split(" ");
-
+        this.id = usuario.getId();
         this.nombre = nombres[0] + " " + nombres[2];
         this.email = usuario.getEmail();
         this.rol = usuario.getRol();;

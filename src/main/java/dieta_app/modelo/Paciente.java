@@ -13,7 +13,7 @@ public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int usuario_id;
+    private int usuarioid;
     private double peso;
     private double altura;
     private String antecedentes_medicos;
@@ -23,9 +23,9 @@ public class Paciente {
     public Paciente() {
     }
 
-    public Paciente(int id, int usuario_id, double peso, double altura, String antecedentes_medicos, LocalDate fecha_nacimiento, String genero) {
+    public Paciente(int id, int usuarioid, double peso, double altura, String antecedentes_medicos, LocalDate fecha_nacimiento, String genero) {
         this.id = id;
-        this.usuario_id = usuario_id;
+        this.usuarioid = usuarioid;
         this.peso = peso;
         this.altura = altura;
         this.antecedentes_medicos = antecedentes_medicos;
@@ -44,12 +44,12 @@ public class Paciente {
         this.id = id;
     }
 
-    public int getUsuario_id() {
-        return usuario_id;
+    public int getusuarioid() {
+        return usuarioid;
     }
 
-    public void setUsuario_id(int usuario_id) {
-        this.usuario_id = usuario_id;
+    public void setusuarioid(int usuarioid) {
+        this.usuarioid = usuarioid;
     }
 
     public double getPeso() {

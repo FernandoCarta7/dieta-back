@@ -1,10 +1,11 @@
 package dieta_app.servicio;
 
+import dieta_app.modelo.Paciente;
 import dieta_app.modelo.Usuario;
+import dieta_app.repositorio.PacienteRepositorio;
 import dieta_app.repositorio.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,9 @@ public class UsuarioServicio implements IUsuarioServicio{
 
     @Autowired
     UsuarioRepositorio usuarioRepositorio;
+
+    @Autowired
+    PacienteRepositorio pacienteRepositorio;
 
     @Override
     public List<Usuario> listar() {
@@ -32,9 +36,12 @@ public class UsuarioServicio implements IUsuarioServicio{
     }
 
     @Override
-    public void eliminarPorId(Integer idUsuario) {
-        usuarioRepositorio.deleteById(idUsuario);
+    public void eliminarPorId(Integer usuarioid) {
+        Paciente pacienteEliminar = pacienteRepositorio.findByusuarioid(usuarioid);
+        pacienteRepositorio.deleteById(pacienteEliminar.getId());
+        usuarioRepositorio.deleteById(usuarioid);
     }
+
 
     public Page<Usuario> listar(Pageable pageable){
 

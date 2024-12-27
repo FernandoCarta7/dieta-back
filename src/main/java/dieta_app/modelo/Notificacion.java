@@ -18,7 +18,7 @@ public class Notificacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int usuario_id;
+    private int usuarioid;
     private String mensaje;
     private LocalDate fecha;
 
