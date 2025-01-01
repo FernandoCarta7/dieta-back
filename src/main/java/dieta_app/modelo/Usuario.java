@@ -21,7 +21,13 @@ public class Usuario {
     public Usuario(Usuario usuario) {
         String [] nombres = usuario.getNombre().split(" ");
         this.id = usuario.getId();
-        this.nombre = nombres[0] + " " + nombres[2];
+
+        if (nombres.length > 2) {
+            this.nombre = nombres[0] + " " + nombres[2];
+        } else {
+            this.nombre = usuario.nombre;
+        }
+
         this.email = usuario.getEmail();
         this.rol = usuario.getRol();;
     }
