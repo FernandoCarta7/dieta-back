@@ -38,7 +38,7 @@ public class PacienteControlador {
     public Paciente agregarPaciente(@RequestBody Paciente paciente, @PathVariable int idUsuario){
         logger.info("Agregando paciente");
 
-        return pacienteServicio.guardar(paciente, idUsuario);
+        return pacienteServicio.guardar(paciente);
     }
 
 }

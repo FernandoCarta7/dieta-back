@@ -9,7 +9,6 @@ import lombok.ToString;
 import java.time.LocalDate;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "notificacion")

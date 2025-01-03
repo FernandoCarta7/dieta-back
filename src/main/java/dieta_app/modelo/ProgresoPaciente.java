@@ -5,7 +5,6 @@ import lombok.*;
 
 import java.time.LocalDate;
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "progreso_paciente")

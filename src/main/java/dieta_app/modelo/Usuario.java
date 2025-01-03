@@ -2,41 +2,33 @@ package dieta_app.modelo;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
-@Data
 @Table(name = "usuario")
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String nombre;
     private String email;
     private String contrasena;
     private String rol;
 
-    public Usuario() {
-    }
-
-    public Usuario(Usuario usuario) {
-        String [] nombres = usuario.getNombre().split(" ");
+    public Usuario(Usuario usuario){
         this.id = usuario.getId();
-
-        if (nombres.length > 2) {
-            this.nombre = nombres[0] + " " + nombres[2];
-        } else {
-            this.nombre = usuario.nombre;
-        }
-
         this.email = usuario.getEmail();
-        this.rol = usuario.getRol();;
+        this.rol = usuario.getRol();
+        this.contrasena = null;
     }
-    public Usuario(int id, String nombre, String email, String contrasena, String rol) {
+
+    /*public Usuario(int id, String email, String contrasena, String rol) {
         this.id = id;
-        this.nombre = nombre;
         this.email = email;
         this.contrasena = contrasena;
         this.rol = rol;
+    }*/
+
+    public Usuario() {
     }
 
     public int getId() {
@@ -45,14 +37,6 @@ public class Usuario {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getEmail() {

@@ -26,8 +26,8 @@ public class  PacienteServicio implements IPacienteServicio{
     }
 
     @Override
-    public Paciente guardar(Paciente paciente, int idUsuario) {
-        paciente.setusuarioid(idUsuario);
+    public Paciente guardar(Paciente paciente) {
+
 
         return pacienteRepositorio.save(paciente);
     }

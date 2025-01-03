@@ -10,7 +10,7 @@ public interface IPacienteServicio {
 
     public Paciente buscarPorId(Integer idPaciente);
 
-    public Paciente guardar(Paciente Paciente, int idUsuario);
+    public Paciente guardar(Paciente Paciente);
 
     public void eliminarPorId(Integer idPaciente);
     public Paciente obtenerPorUsuarioId(int usuarioid );

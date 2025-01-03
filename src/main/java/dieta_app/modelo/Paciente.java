@@ -6,7 +6,6 @@ import lombok.*;
 import java.time.LocalDate;
 
 @Entity
-@Data
 @Table(name = "paciente")
 public class Paciente {
 
@@ -16,25 +15,14 @@ public class Paciente {
     private int usuarioid;
     private double peso;
     private double altura;
+    private String primer_nombre;
+    private String primer_apellido;
+    private String segundo_nombre;
+    private String segundo_apellido;
     private String antecedentes_medicos;
     private LocalDate fecha_nacimiento;
     private String genero;
 
-    public Paciente() {
-    }
-
-    public Paciente(int id, int usuarioid, double peso, double altura, String antecedentes_medicos, LocalDate fecha_nacimiento, String genero) {
-        this.id = id;
-        this.usuarioid = usuarioid;
-        this.peso = peso;
-        this.altura = altura;
-        this.antecedentes_medicos = antecedentes_medicos;
-        this.fecha_nacimiento = fecha_nacimiento;
-        this.genero = genero;
-    }
-
-    public Paciente(Paciente paciente) {
-    }
 
     public int getId() {
         return id;
@@ -44,11 +32,11 @@ public class Paciente {
         this.id = id;
     }
 
-    public int getusuarioid() {
+    public int getUsuarioid() {
         return usuarioid;
     }
 
-    public void setusuarioid(int usuarioid) {
+    public void setUsuarioid(int usuarioid) {
         this.usuarioid = usuarioid;
     }
 
@@ -66,6 +54,38 @@ public class Paciente {
 
     public void setAltura(double altura) {
         this.altura = altura;
+    }
+
+    public String getPrimer_nombre() {
+        return primer_nombre;
+    }
+
+    public void setPrimer_nombre(String primer_nombre) {
+        this.primer_nombre = primer_nombre;
+    }
+
+    public String getPrimer_apellido() {
+        return primer_apellido;
+    }
+
+    public void setPrimer_apellido(String primer_apellido) {
+        this.primer_apellido = primer_apellido;
+    }
+
+    public String getSegundo_nombre() {
+        return segundo_nombre;
+    }
+
+    public void setSegundo_nombre(String segundo_nombre) {
+        this.segundo_nombre = segundo_nombre;
+    }
+
+    public String getSegundo_apellido() {
+        return segundo_apellido;
+    }
+
+    public void setSegundo_apellido(String segundo_apellido) {
+        this.segundo_apellido = segundo_apellido;
     }
 
     public String getAntecedentes_medicos() {

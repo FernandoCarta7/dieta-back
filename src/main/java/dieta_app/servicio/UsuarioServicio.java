@@ -39,7 +39,10 @@ public class UsuarioServicio implements IUsuarioServicio{
     @Override
     public void eliminarPorId(Integer usuarioid) {
         Paciente pacienteEliminar = pacienteRepositorio.findByusuarioid(usuarioid);
-        pacienteRepositorio.deleteById(pacienteEliminar.getId());
+        if (pacienteEliminar != null) {
+            pacienteRepositorio.deleteById(pacienteEliminar.getId());
+        }
+
         usuarioRepositorio.deleteById(usuarioid);
     }
 
@@ -48,12 +51,6 @@ public class UsuarioServicio implements IUsuarioServicio{
 
         return usuarioRepositorio.findAll(pageable).map(usuario -> new Usuario(usuario));
 
-
-
-        /*var lista2 = usuarioRepositorio.findAll();
-        Page page = new PageImpl(lista2);
-        page.map(usuario -> new Usuario());
-        return page;*/
     }
 
 

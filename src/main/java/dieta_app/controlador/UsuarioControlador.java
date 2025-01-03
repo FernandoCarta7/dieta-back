@@ -1,5 +1,6 @@
 package dieta_app.controlador;
 
+import dieta_app.modelo.Paciente;
 import dieta_app.modelo.Usuario;
 import dieta_app.servicio.UsuarioServicio;
 import org.slf4j.Logger;
@@ -7,9 +8,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.http.HttpResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,8 +37,21 @@ public class UsuarioControlador {
     @GetMapping("/usuarios-pageable")
     public Page<Usuario> getUsuarios(@RequestParam(defaultValue = "0") int page,
                                     @RequestParam(defaultValue = "10") int size){
+        
+        var lista = usuarioServicio.listar(PageRequest.of(page, size));
+        return lista;
+    }
 
-        return usuarioServicio.listar(PageRequest.of(page, size));
+    @GetMapping("usuario/obtenerUsuario/{id}")
+    public ResponseEntity<Usuario> getUsuario(@PathVariable int id){
+        Usuario usuario = usuarioServicio.buscarPorId(id);
+
+        if (usuario != null){
+            return ResponseEntity.ok(usuario);
+        }else {
+            return ResponseEntity.ofNullable(usuario);
+        }
+
     }
 
 
@@ -67,6 +83,24 @@ public class UsuarioControlador {
         logger.info("Usuario a agregar: " + usuario);
 
         return usuarioServicio.guardar(usuario);
+    }
+
+    @PutMapping("/usuario/editar/{id}")
+    public ResponseEntity<Usuario> actualizarUsuario( @PathVariable int id, @RequestBody Usuario usuario ){
+        Usuario usuario1 = this.usuarioServicio.buscarPorId(id);
+
+        if ( usuario1 != null ){
+            usuario1.setRol(usuario.getRol());
+            usuario1.setContrasena(usuario.getContrasena());
+            usuario1.setEmail(usuario.getEmail());
+            this.usuarioServicio.guardar(usuario1);
+            return ResponseEntity.ok(usuario1);
+        }else {
+            logger.error("USUARIO NO ENCONTRADO");
+            return ResponseEntity.ofNullable(usuario);
+        }
+
+
     }
 
 

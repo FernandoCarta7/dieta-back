@@ -5,10 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "dietas_recetas")
