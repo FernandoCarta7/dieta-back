@@ -3,6 +3,8 @@ package dieta_app.servicio;
 import dieta_app.modelo.Paciente;
 import dieta_app.repositorio.PacienteRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 
@@ -41,5 +43,9 @@ public class  PacienteServicio implements IPacienteServicio{
     @Override
     public Paciente obtenerPorUsuarioId(int usuarioid) {
         return pacienteRepositorio.findByusuarioid(usuarioid);
+    }
+
+    public Page<Paciente> listar(Pageable pageable){
+        return pacienteRepositorio.findAll(pageable).map( paciente -> new Paciente(paciente) );
     }
 }

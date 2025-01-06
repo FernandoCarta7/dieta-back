@@ -24,6 +24,29 @@ public class Paciente {
     private String genero;
 
 
+    public  Paciente (Paciente paciente){
+        this.id = paciente.getId();
+        this.usuarioid = paciente.getUsuarioid();
+
+        this.peso = paciente.getPeso();
+        this.altura = paciente.getAltura();
+
+        this.primer_apellido = paciente.primer_apellido;
+        this.segundo_apellido = paciente.getSegundo_apellido();
+
+        this.primer_nombre = paciente.getPrimer_nombre();
+        this.segundo_nombre = paciente.getSegundo_nombre();
+
+        this.antecedentes_medicos = paciente.getAntecedentes_medicos();
+        this.fecha_nacimiento = paciente.getFecha_nacimiento();
+        this.genero = paciente.getGenero();
+    }
+
+    public Paciente(){}
+
+
+
+
     public int getId() {
         return id;
     }
