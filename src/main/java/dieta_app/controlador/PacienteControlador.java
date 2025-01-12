@@ -47,7 +47,7 @@ public class PacienteControlador {
     @PostMapping("/paciente/agregar-paciente/{idUsuario}")
     public Paciente agregarPaciente(@RequestBody Paciente paciente, @PathVariable int idUsuario){
         logger.info("Agregando paciente");
-
+        paciente.setUsuarioid( idUsuario );
         return pacienteServicio.guardar(paciente);
     }
 
@@ -98,6 +98,41 @@ public class PacienteControlador {
             return ResponseEntity.ofNullable(paciente);
         }
     }
+    @PutMapping("/editar/paciente/{usuarioid}")
+    public ResponseEntity<Paciente> actualizarPaciente(@RequestBody Paciente pacienteRecibido, @PathVariable int usuarioid){
+        Paciente paciente = new Paciente();
+        paciente = pacienteServicio.obtenerPorUsuarioId(usuarioid);
 
+        if (paciente != null){
+            paciente.setAltura(pacienteRecibido.getAltura());
+            paciente.setGenero(pacienteRecibido.getGenero());
 
+            paciente.setPeso(pacienteRecibido.getPeso());
+            paciente.setFecha_nacimiento(pacienteRecibido.getFecha_nacimiento());
+
+            paciente.setAntecedentes_medicos(pacienteRecibido.getAntecedentes_medicos());
+
+            //APELLIDOS
+            paciente.setPrimer_apellido(pacienteRecibido.getPrimer_apellido());
+            paciente.setSegundo_apellido(paciente.getSegundo_apellido());
+            //NOMBRES
+            paciente.setPrimer_nombre(pacienteRecibido.getPrimer_nombre());
+            paciente.setSegundo_nombre(pacienteRecibido.getSegundo_nombre());
+
+            paciente.setUsuarioid(paciente.getUsuarioid());
+
+            return ResponseEntity.ok(paciente);
+        }else {
+            return ResponseEntity.ofNullable(paciente);
+        }
+    }
+
+    @GetMapping("/paciente/obtenerPacienteIdUsuario/{id_usuario}")
+    public Paciente getPacientePorUsuario ( @PathVariable int id_usuario ){
+        Paciente paciente = new Paciente();
+
+        paciente = pacienteServicio.obtenerPorUsuarioId(id_usuario);
+
+        return paciente;
+    }
 }
