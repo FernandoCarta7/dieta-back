@@ -135,4 +135,12 @@ public class PacienteControlador {
 
         return paciente;
     }
+
+    @GetMapping("/paciente/obtenerPaciente/{id}")
+    public Paciente getPaciente( @PathVariable int id ){
+        Paciente paciente = new Paciente();
+        paciente = pacienteServicio.buscarPorId( id );
+
+        return paciente;
+    }
 }
