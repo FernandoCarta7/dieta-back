@@ -15,12 +15,12 @@ public class Paciente {
     private int usuarioid;
     private double peso;
     private double altura;
-    private String primer_nombre;
-    private String primer_apellido;
-    private String segundo_nombre;
-    private String segundo_apellido;
-    private String antecedentes_medicos;
-    private LocalDate fecha_nacimiento;
+    private String primerNombre;
+    private String primerApellido;
+    private String segundoNombre;
+    private String segundoApellido;
+    private String antecedentesMedicos;
+    private LocalDate fechaNacimiento;
     private String genero;
 
 
@@ -31,14 +31,14 @@ public class Paciente {
         this.peso = paciente.getPeso();
         this.altura = paciente.getAltura();
 
-        this.primer_apellido = paciente.primer_apellido;
-        this.segundo_apellido = paciente.getSegundo_apellido();
+        this.primerApellido = paciente.primerApellido;
+        this.segundoApellido = paciente.getsegundoApellido();
 
-        this.primer_nombre = paciente.getPrimer_nombre();
-        this.segundo_nombre = paciente.getSegundo_nombre();
+        this.primerNombre = paciente.getprimerNombre();
+        this.segundoNombre = paciente.getsegundoNombre();
 
-        this.antecedentes_medicos = paciente.getAntecedentes_medicos();
-        this.fecha_nacimiento = paciente.getFecha_nacimiento();
+        this.antecedentesMedicos = paciente.getantecedentesMedicos();
+        this.fechaNacimiento = paciente.getfechaNacimiento();
         this.genero = paciente.getGenero();
     }
 
@@ -79,52 +79,52 @@ public class Paciente {
         this.altura = altura;
     }
 
-    public String getPrimer_nombre() {
-        return primer_nombre;
+    public String getprimerNombre() {
+        return primerNombre;
     }
 
-    public void setPrimer_nombre(String primer_nombre) {
-        this.primer_nombre = primer_nombre;
+    public void setprimerNombre(String primerNombre) {
+        this.primerNombre = primerNombre;
     }
 
-    public String getPrimer_apellido() {
-        return primer_apellido;
+    public String getprimerApellido() {
+        return primerApellido;
     }
 
-    public void setPrimer_apellido(String primer_apellido) {
-        this.primer_apellido = primer_apellido;
+    public void setprimerApellido(String primerApellido) {
+        this.primerApellido = primerApellido;
     }
 
-    public String getSegundo_nombre() {
-        return segundo_nombre;
+    public String getsegundoNombre() {
+        return segundoNombre;
     }
 
-    public void setSegundo_nombre(String segundo_nombre) {
-        this.segundo_nombre = segundo_nombre;
+    public void setsegundoNombre(String segundoNombre) {
+        this.segundoNombre = segundoNombre;
     }
 
-    public String getSegundo_apellido() {
-        return segundo_apellido;
+    public String getsegundoApellido() {
+        return segundoApellido;
     }
 
-    public void setSegundo_apellido(String segundo_apellido) {
-        this.segundo_apellido = segundo_apellido;
+    public void setsegundoApellido(String segundoApellido) {
+        this.segundoApellido = segundoApellido;
     }
 
-    public String getAntecedentes_medicos() {
-        return antecedentes_medicos;
+    public String getantecedentesMedicos() {
+        return antecedentesMedicos;
     }
 
-    public void setAntecedentes_medicos(String antecedentes_medicos) {
-        this.antecedentes_medicos = antecedentes_medicos;
+    public void setantecedentesMedicos(String antecedentesMedicos) {
+        this.antecedentesMedicos = antecedentesMedicos;
     }
 
-    public LocalDate getFecha_nacimiento() {
-        return fecha_nacimiento;
+    public LocalDate getfechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
+    public void setfechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public String getGenero() {

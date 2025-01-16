@@ -80,16 +80,16 @@ public class PacienteControlador {
             paciente.setGenero(pacienteRecibido.getGenero());
 
             paciente.setPeso(pacienteRecibido.getPeso());
-            paciente.setFecha_nacimiento(pacienteRecibido.getFecha_nacimiento());
+            paciente.setfechaNacimiento(pacienteRecibido.getfechaNacimiento());
 
-            paciente.setAntecedentes_medicos(pacienteRecibido.getAntecedentes_medicos());
+            paciente.setantecedentesMedicos(pacienteRecibido.getantecedentesMedicos());
 
             //APELLIDOS
-            paciente.setPrimer_apellido(pacienteRecibido.getPrimer_apellido());
-            paciente.setSegundo_apellido(paciente.getSegundo_apellido());
+            paciente.setprimerApellido(pacienteRecibido.getprimerApellido());
+            paciente.setsegundoApellido(paciente.getsegundoApellido());
             //NOMBRES
-            paciente.setPrimer_nombre(pacienteRecibido.getPrimer_nombre());
-            paciente.setSegundo_nombre(pacienteRecibido.getSegundo_nombre());
+            paciente.setprimerNombre(pacienteRecibido.getprimerNombre());
+            paciente.setsegundoNombre(pacienteRecibido.getsegundoNombre());
 
             paciente.setUsuarioid(paciente.getUsuarioid());
 
@@ -108,16 +108,16 @@ public class PacienteControlador {
             paciente.setGenero(pacienteRecibido.getGenero());
 
             paciente.setPeso(pacienteRecibido.getPeso());
-            paciente.setFecha_nacimiento(pacienteRecibido.getFecha_nacimiento());
+            paciente.setfechaNacimiento(pacienteRecibido.getfechaNacimiento());
 
-            paciente.setAntecedentes_medicos(pacienteRecibido.getAntecedentes_medicos());
+            paciente.setantecedentesMedicos(pacienteRecibido.getantecedentesMedicos());
 
             //APELLIDOS
-            paciente.setPrimer_apellido(pacienteRecibido.getPrimer_apellido());
-            paciente.setSegundo_apellido(paciente.getSegundo_apellido());
+            paciente.setprimerApellido(pacienteRecibido.getprimerApellido());
+            paciente.setsegundoApellido(paciente.getsegundoApellido());
             //NOMBRES
-            paciente.setPrimer_nombre(pacienteRecibido.getPrimer_nombre());
-            paciente.setSegundo_nombre(pacienteRecibido.getSegundo_nombre());
+            paciente.setprimerNombre(pacienteRecibido.getprimerNombre());
+            paciente.setsegundoNombre(pacienteRecibido.getsegundoNombre());
 
             paciente.setUsuarioid(paciente.getUsuarioid());
 
@@ -142,5 +142,13 @@ public class PacienteControlador {
         paciente = pacienteServicio.buscarPorId( id );
 
         return paciente;
+    }
+
+    @GetMapping("/pacientes-pageable/filtrar-nombre/{primerNombre}")
+    public Page<Paciente> getPacientesNombre(   @PathVariable String primerNombre,
+                                                @RequestParam(defaultValue = "0") int page,
+                                                @RequestParam(defaultValue = "10") int size){
+        var pacientesFiltrados = pacienteServicio.filtrarPacientesNombre(PageRequest.of(page, size), primerNombre);
+        return pacientesFiltrados;
     }
 }
