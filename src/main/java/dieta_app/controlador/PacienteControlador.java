@@ -151,4 +151,12 @@ public class PacienteControlador {
         var pacientesFiltrados = pacienteServicio.filtrarPacientesNombre(PageRequest.of(page, size), primerNombre);
         return pacientesFiltrados;
     }
+
+    @GetMapping("/pacientes-pageable/filtrar-apellido/{primerApellido}")
+    public Page<Paciente> getPacientesApellido(   @PathVariable String primerApellido,
+                                                @RequestParam(defaultValue = "0") int page,
+                                                @RequestParam(defaultValue = "10") int size){
+        var pacientesFiltrados = pacienteServicio.filtrarPacientesApellido(PageRequest.of(page, size), primerApellido);
+        return pacientesFiltrados;
+    }
 }

@@ -10,5 +10,6 @@ public interface PacienteRepositorio extends JpaRepository<Paciente, Integer> {
     Paciente findByusuarioid ( int usuarioid );
     Page<Paciente> findByPrimerNombreAndPrimerApellido(Pageable pageable, String primerNombre, String primerApellido);
     Page<Paciente> findByPrimerNombreOrderByPrimerApellido(Pageable pageable, String primerNombre);
+    Page<Paciente> findByPrimerApellidoOrderByPrimerNombre(Pageable pageable, String primerApellido);
 
 }

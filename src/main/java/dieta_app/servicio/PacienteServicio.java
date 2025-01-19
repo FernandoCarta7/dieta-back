@@ -48,10 +48,19 @@ public class  PacienteServicio implements IPacienteServicio{
     public Page<Paciente> listar(Pageable pageable){
         return pacienteRepositorio.findAll(pageable).map( paciente -> new Paciente(paciente) );
     }
+
     public Page<Paciente> filtrarPacientesNombre(Pageable pageable, String primerNombre){
         //var listaPacientesFiltrada = pacienteRepositorio.findByPrimerNombreOrderByPrimerApellido(pageable,primerNombre).map(paciente -> new Paciente(paciente));
         Page<Paciente> listaPacientesFiltrada = null;
         listaPacientesFiltrada = pacienteRepositorio.findByPrimerNombreOrderByPrimerApellido(pageable,primerNombre).map(paciente -> new Paciente(paciente));
+        return listaPacientesFiltrada;
+    }
+
+
+    public Page<Paciente> filtrarPacientesApellido(Pageable pageable, String apellido){
+        //var listaPacientesFiltrada = pacienteRepositorio.findByPrimerNombreOrderByPrimerApellido(pageable,primerNombre).map(paciente -> new Paciente(paciente));
+        Page<Paciente> listaPacientesFiltrada = null;
+        listaPacientesFiltrada = pacienteRepositorio.findByPrimerApellidoOrderByPrimerNombre(pageable,apellido).map(paciente -> new Paciente(paciente));
         return listaPacientesFiltrada;
     }
 }
