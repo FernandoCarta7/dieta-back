@@ -42,7 +42,7 @@ public class UsuarioControlador {
         return lista;
     }
 
-    @GetMapping("usuario/obtenerUsuario/{id}")
+    @GetMapping("/usuario/obtenerUsuario/{id}")
     public ResponseEntity<Usuario> getUsuario(@PathVariable int id){
         Usuario usuario = usuarioServicio.buscarPorId(id);
 
@@ -61,6 +61,13 @@ public class UsuarioControlador {
 
         return usuarioServicio.listar(PageRequest.of(page, size));
     }*/
+
+    @GetMapping("/usuario/getLastUser")
+    public Usuario getLastUser(){
+        Usuario usuario = new Usuario();
+        usuario = usuarioServicio.getLastUser();
+        return usuario;
+    }
 
 
     @DeleteMapping("/usuario/delete/{id}")

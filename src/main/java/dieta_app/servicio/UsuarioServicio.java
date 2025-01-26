@@ -52,6 +52,11 @@ public class UsuarioServicio implements IUsuarioServicio{
         return usuarioRepositorio.findAll(pageable).map(usuario -> new Usuario(usuario));
 
     }
+    public Usuario getLastUser(){
+        var listaUsuario = usuarioRepositorio.findAll();
+        var lastUser = listaUsuario.getLast();
+        return lastUser;
+    }
 
 
 
