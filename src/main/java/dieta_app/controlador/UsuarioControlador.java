@@ -27,13 +27,7 @@ public class UsuarioControlador {
 
     private static final Logger logger =
             LoggerFactory.getLogger(UsuarioControlador.class);
-/*
-    @GetMapping("/usuarios")
-    public List<Usuario> getNombres(){
-        var listaUsuarios = usuarioServicio.listar();
-        listaUsuarios.sort((a,b) -> Integer.compare(b.getId(), a.getId()));
-        return listaUsuarios;
-    }*/
+
     @GetMapping("/usuarios-pageable")
     public Page<Usuario> getUsuarios(@RequestParam(defaultValue = "0") int page,
                                     @RequestParam(defaultValue = "10") int size){
@@ -54,21 +48,12 @@ public class UsuarioControlador {
 
     }
 
-/*
-    @GetMapping("/usuarios-pageable")
-    public Page<Usuario> getPacientesPageable(@RequestParam(defaultValue = "0") int page,
-                                     @RequestParam(defaultValue = "10") int size){
-
-        return usuarioServicio.listar(PageRequest.of(page, size));
-    }*/
-
     @GetMapping("/usuario/getLastUser")
     public Usuario getLastUser(){
         Usuario usuario = new Usuario();
         usuario = usuarioServicio.getLastUser();
         return usuario;
     }
-
 
     @DeleteMapping("/usuario/delete/{id}")
     public ResponseEntity<Map<String, Boolean>> eliminarUsuario(@PathVariable int id){

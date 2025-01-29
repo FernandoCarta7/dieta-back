@@ -29,9 +29,22 @@ public class  PacienteServicio implements IPacienteServicio{
 
     @Override
     public Paciente guardar(Paciente paciente) {
+        Paciente pacienteGuardar = new Paciente();
+
+        pacienteGuardar.setId(paciente.getId());
+        pacienteGuardar.setprimerNombre(paciente.getprimerNombre().toUpperCase());
+        pacienteGuardar.setsegundoNombre(paciente.getsegundoNombre().toUpperCase());
+        pacienteGuardar.setprimerApellido(paciente.getprimerApellido().toUpperCase());
+        pacienteGuardar.setsegundoApellido(paciente.getsegundoApellido().toUpperCase());
+        pacienteGuardar.setUsuarioid(paciente.getUsuarioid());
+        pacienteGuardar.setfechaNacimiento(paciente.getfechaNacimiento());
+        pacienteGuardar.setPeso(paciente.getPeso());
+        pacienteGuardar.setGenero(paciente.getGenero().toUpperCase());
+        pacienteGuardar.setantecedentesMedicos(paciente.getantecedentesMedicos().toLowerCase());
+        pacienteGuardar.setAltura(paciente.getAltura());
 
 
-        return pacienteRepositorio.save(paciente);
+        return pacienteRepositorio.save(pacienteGuardar);
     }
 
     @Override
